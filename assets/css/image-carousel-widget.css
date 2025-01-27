@@ -54,7 +54,7 @@
 
 /* Animation effect on the wrapper */
 .flip-wrapper.flip {
-    transform: rotateX(360deg);  
+    transform: rotateY(360deg);  
     transform-origin:center;
 }
 
