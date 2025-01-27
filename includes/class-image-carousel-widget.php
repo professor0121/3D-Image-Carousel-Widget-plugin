@@ -86,7 +86,7 @@ class Image_Carousel_Widget extends Widget_Base
                 'range' => [
                     'px' => [
                         'min' => 50,
-                        'max' => 200,
+                        'max' => 00,
                     ],
                 ],
                 'default' => [

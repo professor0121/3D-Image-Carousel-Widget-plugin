@@ -1,25 +1,27 @@
 .image-carousel-widget {
+    width: 100%;
+    max-width: 1200px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     overflow: hidden;
 }
 
 .full-image-container {
-    flex: 2;
-    text-align: center;
+    width: 70%;
+    /* background-color: #000; */
+    height: 700px;
 }
 
 .carousel-container {
     flex: 1;
     display: flex;
+    flex-direction: column;
     gap: 10px;
     overflow-x: auto;
 }
 
 .carousel-container img {
-    width: 100px;
+    width: 30%;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
@@ -27,3 +29,47 @@
 .carousel-container img:hover {
     transform: scale(1.1);
 }
+/* ---------------------------------------------------------------------------- */
+/* CSS for 3D flip animation */
+.full-image-container {
+    position: relative;
+    perspective: 1000px; /* Provides a 3D perspective */
+}
+
+.flip-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    transform-style: preserve-3d;
+    transition: transform 2s ease-in-out;
+}
+
+/* Initial state - The front side of the image */
+.flip-wrapper img {
+    backface-visibility: hidden; /* Hides the back side of the image */
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Animation effect on the wrapper */
+.flip-wrapper.flip {
+    transform: rotateX(360deg);  
+    transform-origin:center;
+}
+
+/* Optional: You can style the backface (hidden side) of the image */
+.flip-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+}
+
+/* Optionally, add shadow or other effects to the container to enhance the 3D effect */
+.full-image-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ------------------------------------------------- */
