@@ -1,0 +1,29 @@
+.image-carousel-widget {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.full-image-container {
+    flex: 2;
+    text-align: center;
+}
+
+.carousel-container {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+}
+
+.carousel-container img {
+    width: 100px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.carousel-container img:hover {
+    transform: scale(1.1);
+}
