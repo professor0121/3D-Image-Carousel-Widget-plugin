@@ -8,7 +8,6 @@
 
 .full-image-container {
     width: 70%;
-    /* background-color: #000; */
     height: 700px;
 }
 
@@ -31,45 +30,90 @@
 }
 /* ---------------------------------------------------------------------------- */
 /* CSS for 3D flip animation */
-.full-image-container {
-    position: relative;
-    perspective: 1000px; /* Provides a 3D perspective */
+.image-carousel-widget {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.flip-wrapper {
-    position: relative;
+.full-image-container {
+    width: 100%;
+    height: 400px; /* Adjust as needed */
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000; /* Background for cube faces */
+}
+
+.swiper-slide img {
     width: 100%;
     height: auto;
-    transform-style: preserve-3d;
-    transition: transform 2s ease-in-out;
+    object-fit: cover;
+}
+/* ------------------------------- */
+.image-carousel-widget {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-/* Initial state - The front side of the image */
-.flip-wrapper img {
-    backface-visibility: hidden; /* Hides the back side of the image */
+.full-image-container {
+    width: 100%;
+    height: 400px; 
+    position: relative;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;  
+}
+
+.swiper-slide img {
     width: 100%;
     height: auto;
-    display: block;
+    object-fit: cover;
 }
 
-/* Animation effect on the wrapper */
-.flip-wrapper.flip {
-    transform: rotateY(360deg);  
-    transform-origin:center;
+
+/* ------------------------------------------------------------------ */
+
+.image-carousel-widget {
+    display: flex;
+    align-items: center; /* Center the content vertically */
 }
 
-/* Optional: You can style the backface (hidden side) of the image */
-.flip-wrapper img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden;
-}
-
-/* Optionally, add shadow or other effects to the container to enhance the 3D effect */
 .full-image-container {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 60%; /* Adjust as needed */
+    height: 400px; /* Adjust to a specific height */
+    margin-right: 20px;
+    overflow: hidden; /* Ensure the image fits properly */
+    position: relative;
 }
 
+.full-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fits inside the container */
+}
 
-/* ------------------------------------------------- */
+.carousel-container {
+    width: 40%; /* Adjust as needed */
+    height: 400px; /* Adjust to match the full image height */
+    overflow: hidden;
+    position: relative;
+}

@@ -27,8 +27,17 @@ function enqueue_image_carousel_assets()
         [],
         '1.0'
     );
+
+    
 }
 add_action('wp_enqueue_scripts', 'enqueue_image_carousel_assets');
+
+function enqueue_swiper_assets() {
+    wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css');
+    wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', [], null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_swiper_assets');
+
 
 // Register the Widget
 function register_image_carousel_widget($widgets_manager)
