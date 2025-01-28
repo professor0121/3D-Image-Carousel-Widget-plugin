@@ -44,6 +44,29 @@ class Image_Carousel_Widget extends Widget_Base
                 'default' => [],
             ]
         );
+        $this->add_control(
+            'direction',
+            [
+                'label' => __('Carousel Direction', 'text-domain'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'horizontal' => __('Horizontal', 'text-domain'),
+                    'vertical' => __('Vertical', 'text-domain'),
+                ],
+                'default' => 'horizontal',
+            ]
+        );
+        $this->add_control(
+            'autoplaySpeed',
+            [
+                'label' => __('Autoplay Speed (ms)', 'text-domain'),
+                'type' => Controls_Manager::NUMBER,
+                'min' => 1000,
+                'max' => 10000,
+                'step' => 100,
+                'default' => 3000,
+            ]
+        );
 
         $this->end_controls_section();
 

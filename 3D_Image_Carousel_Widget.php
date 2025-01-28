@@ -15,12 +15,19 @@ if (! defined('ABSPATH')) {
 function enqueue_image_carousel_assets()
 {
     wp_enqueue_script(
-        'test2-js',
-        plugin_dir_url(__FILE__) . 'assets/js/test2.js',
+        'test3-js',
+        plugin_dir_url(__FILE__) . 'assets/js/test3.js',
         ['jquery'],
         '1.0',
         true
     );
+    // wp_enqueue_script(
+    //     'test2-js',
+    //     plugin_dir_url(__FILE__) . 'assets/js/test2.js',
+    //     ['jquery'],
+    //     '1.0',
+    //     true
+    //);
     // wp_enqueue_script(
     //     'test-js',
     //     plugin_dir_url(__FILE__) . 'assets/js/test.js',
