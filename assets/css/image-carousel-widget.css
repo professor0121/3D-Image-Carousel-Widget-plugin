@@ -55,7 +55,7 @@
 
 .swiper-slide img {
     width: 100%;
-    height: auto;
+    height: 700px;
     object-fit: cover;
 }
 /* ------------------------------- */
@@ -120,14 +120,14 @@
 
 
 .full-image-container {
-    width: 400px; /* Adjust size */
+    width: 400px; 
     height: 400px;
     margin: auto;   
     position: relative;
 }
 
 .carousel-container {
-    width: 150px; /* Adjust width */
+    width: 300px; /* Adjust width */
     height: 400px; /* Match height with full-image-container */
     margin: auto;
     position: relative;

@@ -2,8 +2,8 @@
 /*
 Plugin Name: 3D Image Carousel Widget
 Description: A custom Elementor widget for a 3D image carousel.
-Version: 1.0
-Author: Your Name
+Version: 1.0.1
+Author: Abhishek kushwaha
 */
 
 // Prevent direct access
@@ -15,12 +15,26 @@ if (! defined('ABSPATH')) {
 function enqueue_image_carousel_assets()
 {
     wp_enqueue_script(
-        'image-carousel-widget-js',
-        plugin_dir_url(__FILE__) . 'assets/js/image-carousel-widget.js',
+        'test-js',
+        plugin_dir_url(__FILE__) . 'assets/js/test.js',
         ['jquery'],
         '1.0',
         true
     );
+    // wp_enqueue_script(
+    //     'test-js',
+    //     plugin_dir_url(__FILE__) . 'assets/js/test.js',
+    //     ['jquery'],
+    //     '1.0',
+    //     true
+    // );
+    // wp_enqueue_script(
+    //     'image-carousel-widget-js',
+    //     plugin_dir_url(__FILE__) . 'assets/js/image-carousel-widget.js',
+    //     ['jquery'],
+    //     '1.0',
+    //     true
+    // );
     wp_enqueue_style(
         'image-carousel-widget-css',
         plugin_dir_url(__FILE__) . 'assets/css/image-carousel-widget.css',

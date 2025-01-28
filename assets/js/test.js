@@ -1,13 +1,12 @@
- 
-
 document.addEventListener('DOMContentLoaded', function () {
     const widgets = document.querySelectorAll('.image-carousel-widget');
 
     widgets.forEach(function (widget) {
         const fullImageContainer = widget.querySelector('.full-image-container');
         const carouselContainer = widget.querySelector('.carousel-container');
+        const autoplayInterval = widget.dataset.autoplayInterval || 1000; // Allowing dynamic autoplay interval (default: 3000)
+        const slidesPerView = widget.dataset.slidesPerView || 3; // Allow dynamic slides per view (default: 3)
         let images = [];
-
         // Collect images from the carousel
         carouselContainer.querySelectorAll('img').forEach(function (img) {
             images.push(img.src);
@@ -16,17 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
         // If no images are available, show a fallback message or image
         if (images.length === 0) {
             fullImageContainer.innerHTML = "<p>No images available</p>";
-            carouselContainer.innerHTML = "<p>No images available</p>";
+            carouselContainer.innerHTML = "<p>No images available</p>"; 
             return;
         }
 
-        // 1. Set up Swiper for the carousel (vertical slider)
+        // Create carousel for the thumbnail images
         const carouselSwiperContainer = document.createElement('div');
         carouselSwiperContainer.classList.add('swiper');
         const carouselSwiperWrapper = document.createElement('div');
         carouselSwiperWrapper.classList.add('swiper-wrapper');
 
-        // Add images as Swiper slides for the vertical slider
         images.forEach((src) => {
             const swiperSlide = document.createElement('div');
             swiperSlide.classList.add('swiper-slide');
@@ -45,26 +43,25 @@ document.addEventListener('DOMContentLoaded', function () {
         carouselContainer.innerHTML = ''; // Clear previous content
         carouselContainer.appendChild(carouselSwiperContainer);
 
-        // Initialize Swiper for carousel-container (vertical slider with autoplay)
+        // Initialize the carousel with dynamic slides per view and autoplay interval
         const carouselSwiper = new Swiper(carouselSwiperContainer, {
             direction: 'vertical', // Vertical sliding
-            slidesPerView: 3, // Show 3 thumbnails at a time
+            slidesPerView: slidesPerView, // Dynamic slides per view
             spaceBetween: 10,
             loop: true, // Infinite loop
             autoplay: {
-                delay: 3000, // Auto-slide every 3 seconds
-                disableOnInteraction: false,
+                delay: autoplayInterval, // Auto-slide every X milliseconds
+                disableOnInteraction: false, // Do not stop autoplay on interaction
             },
-            loopAdditionalSlides: 1, // Ensures smooth infinite loop
+            loopAdditionalSlides: images.length, // Ensure smooth looping with additional slides
+            speed: 2000, // Transition speed
         });
-
-        // 2. Set up Swiper for the full-image-container (cube effect)
+        // Create full-image carousel with cube effect
         const fullSwiperContainer = document.createElement('div');
         fullSwiperContainer.classList.add('swiper');
         const fullSwiperWrapper = document.createElement('div');
         fullSwiperWrapper.classList.add('swiper-wrapper');
 
-        // Add images as Swiper slides for the cube effect
         images.forEach((src) => {
             const swiperSlide = document.createElement('div');
             swiperSlide.classList.add('swiper-slide');
@@ -83,57 +80,58 @@ document.addEventListener('DOMContentLoaded', function () {
         fullImageContainer.innerHTML = ''; // Clear previous content
         fullImageContainer.appendChild(fullSwiperContainer);
 
-        // Initialize Swiper for full-image-container (cube effect with autoplay)
+        // Initialize full-image container with cube effect
         const fullSwiper = new Swiper(fullSwiperContainer, {
             effect: 'cube',
             grabCursor: true,
             cubeEffect: {
                 shadow: true,
                 slideShadows: true,
-                shadowOffset: 20,
+                shadowOffset: 200,
                 shadowScale: 0.94,
             },
             autoplay: {
-                delay: 3000, // Auto-slide every 3 seconds
-                disableOnInteraction: false, // Don't stop autoplay on interaction
+                delay: autoplayInterval, // Auto-slide every X milliseconds
+                disableOnInteraction: false, // Do not stop autoplay on interaction
             },
-            loop: true, // Infinite loop
+            loop: false, // Infinite loop
             direction: 'vertical', // Rotate cube vertically
-            loopAdditionalSlides: 1, // Ensures smooth infinite loop
+            loopAdditionalSlides: images.length, // Ensures smooth infinite loop
+            speed: 1000, // Transition speed
         });
 
-        // Custom loop handling logic: Reset loop at the end and restart
-        function resetToFirstImage() {
-            // Check if carousel has reached the last image
-            if (carouselSwiper.realIndex === images.length - 1) {
-                // Reset carousel to first image
-                carouselSwiper.slideTo(0, 0); // Go to first slide with no animation
-                fullSwiper.slideTo(0, 0); // Go to first slide in the cube
-            }
-        }
-
-        // Synchronize full-image-container with carousel-container
+        // Synchronize both carousels
         fullSwiper.on('slideChange', () => {
             const activeIndex = fullSwiper.realIndex;
-            carouselSwiper.slideToLoop(activeIndex); // Sync vertical slider with cube
-            resetToFirstImage(); // Reset after last image in the loop
+            carouselSwiper.slideToLoop(activeIndex); // Sync carousel with full image view
         });
 
         carouselSwiper.on('slideChange', () => {
             const activeIndex = carouselSwiper.realIndex;
-            fullSwiper.slideToLoop(activeIndex); // Sync cube with vertical slider
-            resetToFirstImage(); // Reset after last image in the loop
+            fullSwiper.slideToLoop(activeIndex); // Sync full image with carousel
         });
 
-        // 3. Navigation Logic - Click to navigate to the full image container
+        // Navigation Logic - Click to navigate to the full image container
         const carouselImages = carouselContainer.querySelectorAll('.swiper-slide img');
-
         carouselImages.forEach((image, index) => {
             image.addEventListener('click', () => {
-                // Navigate to the clicked image in full image container
-                fullSwiper.slideToLoop(index); // Go to the clicked image in full container
-                carouselSwiper.slideToLoop(index); // Sync carousel to the clicked image
+                fullSwiper.slideToLoop(index); // Go to clicked image in full container
+                carouselSwiper.slideToLoop(index); // Sync carousel to clicked image
             });
         });
+
+        // Ensuring continuous loop behavior dynamically
+        function ensureInfiniteLoop() {
+            const totalImages = images.length;
+
+            // Reset the fullSwiper and carouselSwiper to loop infinitely
+            if (carouselSwiper.realIndex === totalImages - 1) {
+                carouselSwiper.slideTo(0, 0); // Restart carousel
+                fullSwiper.slideTo(0, 0); // Restart full image
+            }
+        }
+
+        // Keep checking and ensuring smooth loop behavior dynamically
+        setInterval(ensureInfiniteLoop, autoplayInterval); // Check and reset based on autoplay interval
     });
 });
