@@ -15,8 +15,8 @@ if (! defined('ABSPATH')) {
 function enqueue_image_carousel_assets()
 {
     wp_enqueue_script(
-        'test-js',
-        plugin_dir_url(__FILE__) . 'assets/js/test.js',
+        'test2-js',
+        plugin_dir_url(__FILE__) . 'assets/js/test2.js',
         ['jquery'],
         '1.0',
         true
