@@ -37,13 +37,40 @@ class Image_Carousel_Widget extends Widget_Base
         );
 
         $this->add_control(
-            'carousel_images',
+            'image_text_repeater',
             [
-                'label' => __('Add Images', 'text-domain'),
-                'type' => Controls_Manager::GALLERY,
-                'default' => [],
+                'label' => __('Image and Text', 'text-domain'),
+                'type' => Controls_Manager::REPEATER,
+                'fields' => [
+                    [
+                        'name' => 'image',
+                        'label' => __('Image', 'text-domain'),
+                        'type' => Controls_Manager::MEDIA,
+                        'default' => [
+                            'url' => '',  // Default empty
+                        ],
+                    ],
+                    [
+                        'name' => 'text',
+                        'label' => __('Text', 'text-domain'),
+                        'type' => Controls_Manager::TEXT,
+                        'default' => __('Default Text', 'text-domain'),
+                    ],
+                ],
+                'default' => [
+                    [
+                        'image' => ['url' => ''], // Ensure URL is set here
+                        'text'  => 'Image 1 Text',
+                    ],
+                    [
+                        'image' => ['url' => ''], // Default empty or valid URL
+                        'text'  => 'Image 2 Text',
+                    ],
+                ],
+                'title_field' => '{{{ text }}}', // Display text in Elementor UI
             ]
         );
+        
         $this->add_control(
             'direction',
             [
@@ -147,22 +174,64 @@ class Image_Carousel_Widget extends Widget_Base
         $this->end_controls_section();
     }
 
-    protected function render()
-    {
+    protected function render() {
         $settings = $this->get_settings_for_display();
-        $images   = $settings['carousel_images'];
-
-        if (empty($images)) {
+        $items = $settings['image_text_repeater'];  // Get the repeater items
+    
+        if (empty($items)) {
             return;
         }
-
+    
+        // Adding HTML structure for both containers: Cube (first container) and Carousel (second container)
         echo '<div class="image-carousel-widget">';
-        echo '<div class="full-image-container"></div>';
-        echo '<div class="carousel-container">';
-        foreach ($images as $image) {
-            echo '<img src="' . esc_url($image['url']) . '" alt="">';
-        }
-        echo '</div>';
-        echo '</div>';
+    
+            // Container to hold both the cube and the carousel side by side
+            echo '<div class="containers-wrapper">';
+    
+                // First container (Cube - Using Swiper)
+                echo '<div class="swiper-container cube-container">';
+                echo '<div class="swiper-wrapper">';
+                
+                // Loop through each repeater item for the cube (each will be a slide)
+                foreach ($items as $item) {
+                    $image_url = isset($item['image']['url']) ? $item['image']['url'] : '';
+                    $text = isset($item['text']) ? $item['text'] : '';
+    
+                    if ($image_url) {
+                        echo '<div class="swiper-slide cube-face">';
+                        echo '<img src="' . esc_url($image_url) . '" alt="">';
+                        echo '<div class="cube-text">' . esc_html($text) . '</div>';
+                        echo '</div>';
+                    }
+                }
+    
+                echo '</div>'; // End of swiper-wrapper
+                echo '</div>'; // End of swiper-container
+    
+                // Second container (Vertical Carousel - Using Swiper)
+                echo '<div class="swiper-container vertical-carousel">';
+                echo '<div class="swiper-wrapper">';
+                
+                // Loop through each repeater item for the vertical carousel
+                foreach ($items as $item) {
+                    $image_url = isset($item['image']['url']) ? $item['image']['url'] : '';
+                    $text = isset($item['text']) ? $item['text'] : '';
+    
+                    if ($image_url) {
+                        echo '<div class="swiper-slide">';
+                        echo '<img src="' . esc_url($image_url) . '" alt="">';
+                        echo '<div class="carousel-text">' . esc_html($text) . '</div>';
+                        echo '</div>';
+                    }
+                }
+    
+                echo '</div>'; // End of swiper-wrapper
+                echo '</div>'; // End of swiper-container
+    
+            echo '</div>'; // End of containers-wrapper
+    
+        echo '</div>'; // End of image-carousel-widget
     }
+    
+
 }

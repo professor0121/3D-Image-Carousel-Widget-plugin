@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     images.forEach((src) => {
         const slide = document.createElement('div');
         slide.classList.add('swiper-slide');
-        slide.innerHTML = `<img src="${src}" alt="Full Image" style="width: 100%; height: auto;">`;
+        slide.innerHTML = `<img src="${src}" alt="Full Image" style="width: 100%; height: 400px;">`;
         fullSwiperWrapper.appendChild(slide);
     });
 

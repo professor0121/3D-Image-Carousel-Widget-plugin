@@ -1,135 +1,80 @@
+
 .image-carousel-widget {
     width: 100%;
-    max-width: 600px;
     display: flex;
     justify-content: space-between;
-    overflow: hidden;
-    margin: 0 auto;
+    gap: 20px; /* Add gap between the two containers */
 }
 
-.full-image-container {
-    width: 70%;
-    height: 700px;
-}
-
-.carousel-container {
-    flex: 1;
+.containers-wrapper {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    overflow-x: auto;
-}
-
-.carousel-container img {
-    width: 30%;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.carousel-container img:hover {
-    transform: scale(1.1);
-}
-/* ---------------------------------------------------------------------------- */
-/* CSS for 3D flip animation */
-/* .image-carousel-widget {
+    justify-content: space-between;
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-} */
-
-.full-image-container {
-    width: 100%;
-    height: 400px; /* Adjust as needed */
+    gap: 20px; /* Add gap between the two containers */
 }
 
-.swiper {
-    width: 100%;
-    height: 100%;
+.swiper-container {
+    width: 45%;  /* Adjust width as necessary */
+    height: 500px; /* Adjust height as necessary */
 }
 
-.swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #000; /* Background for cube faces */
-}
-
-.swiper-slide img {
-    width: 100%;
-    height: 700px;
-    object-fit: cover;
-}
-/* ------------------------------- */
-/* .image-carousel-widget {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.full-image-container {
-    width: 100%;
-    height: 400px; 
+/* Cube container using swiper */
+.cube-container {
     position: relative;
+    perspective: 1500px;
 }
 
-.swiper {
-    width: 100%;
-    height: 100%;
+.swiper-wrapper {
+    display: flex;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
 }
 
 .swiper-slide {
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: #000;  
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
 }
 
-.swiper-slide img {
+.cube-face img {
     width: 100%;
     height: auto;
     object-fit: cover;
-} */
+}
 
+.cube-text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    font-size: 20px;
+}
 
-/* ------------------------------------------------------------------ */
-/* 
-.image-carousel-widget {
+/* Swiper Styles for the Vertical Carousel */
+.vertical-carousel .swiper-slide {
     display: flex;
-    align-items: center;  
+    align-items: center;
+    justify-content: center;
 }
 
-.full-image-container {
-    width: 60%;  
-    height: 400px; 
-    margin-right: 20px;
-    overflow: hidden;  
-    position: relative;
-}
-
-.full-image-container img {
+.vertical-carousel .swiper-slide img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; 
+    height: auto;
+    object-fit: cover;
 }
 
-.carousel-container {
-    width: 40%; 
-    height: 400px;  
-    overflow: hidden;
-    position: relative;
-} */
-
-
-.full-image-container {
-    width: 400px; 
-    height: 400px;  
-    margin: auto;   
-    position: relative;
-}
-
-.carousel-container {
-    width: 300px; /* Adjust width */
-    height: 400px; /* Match height with full-image-container */
-    margin: auto;
-    position: relative;
+.carousel-text {
+    position: absolute;
+    /* bottom: 10px; */
+    /* left: 10px; */
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    font-size: 20px;
 }
