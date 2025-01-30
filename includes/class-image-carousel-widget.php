@@ -71,107 +71,78 @@ class Image_Carousel_Widget extends Widget_Base
             ]
         );
         
-        $this->add_control(
-            'direction',
-            [
-                'label' => __('Carousel Direction', 'text-domain'),
-                'type' => Controls_Manager::SELECT,
-                'options' => [
-                    'horizontal' => __('Horizontal', 'text-domain'),
-                    'vertical' => __('Vertical', 'text-domain'),
-                ],
-                'default' => 'horizontal',
-            ]
-        );
-        $this->add_control(
-            'autoplaySpeed',
-            [
-                'label' => __('Autoplay Speed (ms)', 'text-domain'),
-                'type' => Controls_Manager::NUMBER,
-                'min' => 1000,
-                'max' => 10000,
-                'step' => 100,
-                'default' => 3000,
-            ]
-        );
+        
 
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'style_section',
+            'text_style_section',
             [
-                'label' => __('Style', 'text-domain'),
+                'label' => __('Text Style', 'text-domain'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-
+        
         $this->add_control(
-            'full_image_width',
+            'text_color',
             [
-                'label' => __('Full Image Width', 'text-domain'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['%'],
-                'range' => [
-                    '%' => [
-                        'min' => 10,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => '%',
-                    'size' => 100,
-                ],
+                'label' => __('Text Color', 'text-domain'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .full-image-container img' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .cube-text, {{WRAPPER}} .carousel-text' => 'color: {{VALUE}};',
                 ],
             ]
         );
-
         $this->add_control(
-            'carousel_image_size',
+            'text_bg_color',
             [
-                'label' => __('Carousel Image Size', 'text-domain'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 50,
-                        'max' => 00,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 100,
-                ],
+                'label' => __('Background Color', 'text-domain'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carousel-container img' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .cube-text, {{WRAPPER}} .carousel-text' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
-
-        $this->add_control(
-            'carousel_gap',
+        
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
             [
-                'label' => __('Carousel Gap', 'text-domain'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 50,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 10,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .carousel-container' => 'gap: {{SIZE}}{{UNIT}};',
-                ],
+                'name' => 'text_typography',
+                'label' => __('Typography', 'text-domain'),
+                'selector' => '{{WRAPPER}} .cube-text, {{WRAPPER}} .carousel-text',
             ]
         );
-
+        
+        $this->add_responsive_control(
+            'text_alignment',
+            [
+                'label' => __('Text Alignment', 'text-domain'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __('Left', 'text-domain'),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'text-domain'),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => __('Right', 'text-domain'),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .cube-text, {{WRAPPER}} .carousel-text' => 'text-align: {{VALUE}};',
+                ],
+                'default' => 'center',
+            ]
+        );
+        
         $this->end_controls_section();
+        
+         
+        
     }
 
     protected function render() {
