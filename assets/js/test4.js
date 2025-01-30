@@ -38,7 +38,7 @@
         var verticalCarousel = new Swiper('.vertical-carousel', {
             direction: 'vertical',    // Enable vertical direction
             loop: true,               // Infinite loop
-            slidesPerView: 3,         // Show 3 images at a time
+            slidesPerView: 4,         // Show 3 images at a time
             spaceBetween: 10,         // Space between images
             autoplay: {
                 delay: 3000,          // Delay for autoplay

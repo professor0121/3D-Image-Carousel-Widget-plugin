@@ -3,19 +3,19 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    gap: 20px; /* Add gap between the two containers */
+    /* gap: 20px; Add gap between the two containers */
 }
 
 .containers-wrapper {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    gap: 20px; /* Add gap between the two containers */
+     gap: 5px;  
 }
 
 .swiper-container {
     width: 80%;  /* Adjust width as necessary */
-    height: 500px; /* Adjust height as necessary */
+    height: 600px; /* Adjust height as necessary */
 }
 
 /* Cube container using swiper */
@@ -64,6 +64,10 @@
     justify-content: center;
 }
 
+.vertical-carousel
+{
+    width: 25%;  /* Adjust width as necessary */
+}
 .vertical-carousel .swiper-slide img {
     width: 100%;
     height: auto;
@@ -81,6 +85,8 @@
 }
 
 
-.swiper-container .swiper-slide{
-    width: 100%;
+/* .cube-container .swiper-slide img{
+    background:red;
+    height: 500px;
 }
+  */
