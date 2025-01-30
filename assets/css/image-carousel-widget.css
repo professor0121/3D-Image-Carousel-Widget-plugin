@@ -14,7 +14,7 @@
 }
 
 .swiper-container {
-    width: 45%;  /* Adjust width as necessary */
+    width: 80%;  /* Adjust width as necessary */
     height: 500px; /* Adjust height as necessary */
 }
 
@@ -48,9 +48,10 @@
 
 .cube-text {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    /* bottom: 10px; */
+    /* left: 10px; */
     color: white;
+    padding-top: 10px;
     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     font-size: 20px;
@@ -77,4 +78,9 @@
     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     font-size: 20px;
+}
+
+
+.swiper-container .swiper-slide{
+    width: 100%;
 }
