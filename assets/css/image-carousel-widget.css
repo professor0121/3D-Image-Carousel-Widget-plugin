@@ -1,24 +1,21 @@
-
 .image-carousel-widget {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    /* gap: 20px; Add gap between the two containers */
 }
 
 .containers-wrapper {
     display: flex;
     justify-content: space-between;
     width: 100%;
-     gap: 5px;  
+    gap: 5px;
 }
 
 .swiper-container {
-    width: 80%;  /* Adjust width as necessary */
-    height: 600px; /* Adjust height as necessary */
+    width: 80%;
+    height: 600px;
 }
 
-/* Cube container using swiper */
 .cube-container {
     position: relative;
     perspective: 1500px;
@@ -48,8 +45,6 @@
 
 .cube-text {
     position: absolute;
-    /* bottom: 10px; */
-    /* left: 10px; */
     color: white;
     padding-top: 10px;
     background: rgba(0, 0, 0, 0.5);
@@ -57,17 +52,16 @@
     font-size: 20px;
 }
 
-/* Swiper Styles for the Vertical Carousel */
 .vertical-carousel .swiper-slide {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.vertical-carousel
-{
-    width: 25%;  /* Adjust width as necessary */
+.vertical-carousel {
+    width: 25%;
 }
+
 .vertical-carousel .swiper-slide img {
     width: 100%;
     height: auto;
@@ -76,17 +70,54 @@
 
 .carousel-text {
     position: absolute;
-    /* bottom: 10px; */
-    /* left: 10px; */
     color: white;
     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     font-size: 20px;
 }
 
-
-/* .cube-container .swiper-slide img{
-    background:red;
-    height: 500px;
+.d3-image-carousel-widget {
+    position: relative;
 }
-  */
+
+.text-swiper-slider {
+    position: absolute;
+    display:flex;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.carousel-text, .swiper-slide-text {
+    width: 100%;
+}
+
+
+.text-swiper-slider {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.swiper-slide-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    color: white;
+}
+
+.carousel-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.carousel-description {
+    font-size: 16px;
+}
+
