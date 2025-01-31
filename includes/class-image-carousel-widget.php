@@ -79,72 +79,93 @@ class Image_Carousel_Widget extends Widget_Base
         );
 
         $this->end_controls_section();
-
+ 
         $this->start_controls_section(
-            'text_style_section',
+            'heading_style_section',
             [
-                'label' => __('Text Style', 'text-domain'),
+                'label' => __('Heading Style', 'text-domain'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
-
+        
         $this->add_control(
-            'text_color',
+            'heading_color',
             [
-                'label'     => __('Text Color', 'text-domain'),
+                'label'     => __('Heading Color', 'text-domain'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .cube-text, {{WRAPPER}} .carousel-text' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .carousel-heading' => 'color: {{VALUE}};',
                 ],
             ]
         );
-        $this->add_control(
-            'text_bg_color',
-            [
-                'label'     => __('Background Color', 'text-domain'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .cube-text, {{WRAPPER}} .carousel-text' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
+        
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'     => 'text_typography',
-                'label'    => __('Typography', 'text-domain'),
-                'selector' => '{{WRAPPER}} .cube-text, {{WRAPPER}} .carousel-text',
+                'name'     => 'heading_typography',
+                'label'    => __('Heading Typography', 'text-domain'),
+                'selector' => '{{WRAPPER}} .carousel-heading',
             ]
         );
-
+        
         $this->add_responsive_control(
-            'text_alignment',
+            'heading_margin',
             [
-                'label'     => __('Text Alignment', 'text-domain'),
-                'type'      => Controls_Manager::CHOOSE,
-                'options'   => [
-                    'left'   => [
-                        'title' => __('Left', 'text-domain'),
-                        'icon'  => 'eicon-text-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'text-domain'),
-                        'icon'  => 'eicon-text-align-center',
-                    ],
-                    'right'  => [
-                        'title' => __('Right', 'text-domain'),
-                        'icon'  => 'eicon-text-align-right',
-                    ],
+                'label'      => __('Heading Margin', 'text-domain'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'selectors'  => [
+                    '{{WRAPPER}} .carousel-heading' => 'margin: {{TOP}} {{RIGHT}} {{BOTTOM}} {{LEFT}};',
                 ],
-                'selectors' => [
-                    '{{WRAPPER}} .cube-text, {{WRAPPER}} .carousel-text' => 'text-align: {{VALUE}};',
-                ],
-                'default'   => 'center',
+                'separator'  => 'before',
             ]
         );
-
+        
         $this->end_controls_section();
+        
+        // Now for Description Text
+        $this->start_controls_section(
+            'description_style_section',
+            [
+                'label' => __('Description Style', 'text-domain'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        
+        $this->add_control(
+            'description_color',
+            [
+                'label'     => __('Description Color', 'text-domain'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .carousel-description' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'description_typography',
+                'label'    => __('Description Typography', 'text-domain'),
+                'selector' => '{{WRAPPER}} .carousel-description',
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'description_margin',
+            [
+                'label'      => __('Description Margin', 'text-domain'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'selectors'  => [
+                    '{{WRAPPER}} .carousel-description' => 'margin: {{TOP}} {{RIGHT}} {{BOTTOM}} {{LEFT}};',
+                ],
+                'separator'  => 'before',
+            ]
+        );
+        
+        $this->end_controls_section();
+        
+
 
     }
 
@@ -191,7 +212,7 @@ class Image_Carousel_Widget extends Widget_Base
             $text      = isset($item['text']) ? $item['text'] : '';
 
             if ($image_url) {
-                echo '<div class="swiper-slide">';
+                echo '<div class="swiper-slide" style="display:flex;flex-direction:column">';
                 echo '<img src="' . esc_url($image_url) . '" alt="">';
                 echo '</div>';
             }

@@ -41,7 +41,7 @@
                 disableOnInteraction: false, // Keep autoplay even after user interaction
             },
             speed: 3000,                // Speed of slide transition (1 second)
-            effect: 'fade',             // Fade effect between slides
+            // effect: 'fade',             // Fade effect between slides
             pagination: {
                 el: '.swiper-pagination', // Add pagination (optional)
                 clickable: true,          // Allow clicking on pagination bullets
