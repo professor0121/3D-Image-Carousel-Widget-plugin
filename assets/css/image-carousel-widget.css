@@ -1,6 +1,7 @@
 .image-carousel-widget {
     width: 100%;
     display: flex;
+    overflow: hidden;
     justify-content: space-between;
 }
 
@@ -59,19 +60,21 @@
 }
 
 .vertical-carousel {
-    width: 25%;
+    width: 30%;
+    overflow: hidden;
+    height: 750px;
 }
 
 .vertical-carousel .swiper-slide img {
     width: 100%;
-    height: auto;
+    height: 350px;
     object-fit: cover;
 }
 
 .carousel-text {
     position: absolute;
     color: white;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(240, 35, 35, 0.5);
     padding: 10px;
     font-size: 20px;
 }
@@ -82,32 +85,37 @@
 
 .text-swiper-slider {
     position: absolute;
-    display:flex;
+    display: flex;
     width: 100%;
-    bottom: 0;
+    /* bottom: 300; */
     left: 0;
     z-index: 2;
+    margin-bottom: 50px;
 }
 
-.carousel-text, .swiper-slide-text {
+.carousel-text,
+.swiper-slide-text {
     width: 100%;
 }
 
 
 .text-swiper-slider {
-    position: relative;
-    width: 100%;
+    position: absolute;
+    width: 72.7%;
     height: auto;
+    top: 590px;;
     overflow: hidden;
 }
 
 .swiper-slide-text {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    background: rgba(0, 0, 0, 0.6);
+    /* Semi-transparent background */
     color: white;
 }
 
@@ -120,4 +128,75 @@
 .carousel-description {
     font-size: 16px;
 }
+
+.zoomed{
+    animation: ZoomIn 10s ease-in-out infinite;
+}
+
+@keyframes ZoomIn {
+    0% {
+        transform: scale(1);
+    }
+    5% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(1.002);
+    }
+    25% {
+        transform: scale(1.003);
+    }
+    30% {
+        transform: scale(1.004);
+    }
+    35% {
+        transform: scale(1.005);
+    }
+    40% {
+        transform: scale(1.006);
+    }
+    45% {
+        transform: scale(1.007);
+    }
+    50% {
+        transform: scale(1.008);
+    }
+    55% {
+        transform: scale(1.009);
+    }
+    60% {
+        transform: scale(1.01);
+    }
+    65% {
+        transform: scale(1.011);
+    }
+    70% {
+        transform: scale(1.012);
+    }
+    75% {
+        transform: scale(1.013);
+    }
+    80% {
+        transform: scale(1.014);
+    }
+    85% {
+        transform: scale(1.015);
+    }
+    90% {
+        transform: scale(1.016);
+    }
+    95% {
+        transform: scale(1.017);
+    }
+    100% {
+        transform: scale(1.018);
+    }
+}
+
 

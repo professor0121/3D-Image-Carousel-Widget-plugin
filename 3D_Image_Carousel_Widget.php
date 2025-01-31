@@ -15,41 +15,18 @@ if (! defined('ABSPATH')) {
 function enqueue_image_carousel_assets()
 {
     wp_enqueue_script(
-        'test4-js',
-        plugin_dir_url(__FILE__) . 'assets/js/test4.js',
+        'image-carousel-wigets-js',
+        plugin_dir_url(__FILE__) . 'assets/js/image-carousel-wigets.js',
         ['jquery'],
         '1.0',
         true
     );
-    // wp_enqueue_script(
-    //     'test2-js',
-    //     plugin_dir_url(__FILE__) . 'assets/js/test2.js',
-    //     ['jquery'],
-    //     '1.0',
-    //     true
-    //);
-    // wp_enqueue_script(
-    //     'test-js',
-    //     plugin_dir_url(__FILE__) . 'assets/js/test.js',
-    //     ['jquery'],
-    //     '1.0',
-    //     true
-    // );
-    // wp_enqueue_script(
-    //     'image-carousel-widget-js',
-    //     plugin_dir_url(__FILE__) . 'assets/js/image-carousel-widget.js',
-    //     ['jquery'],
-    //     '1.0',
-    //     true
-    // );
     wp_enqueue_style(
         'image-carousel-widget-css',
         plugin_dir_url(__FILE__) . 'assets/css/image-carousel-widget.css',
         [],
         '1.0'
-    );
-
-    
+    ); 
 }
 add_action('wp_enqueue_scripts', 'enqueue_image_carousel_assets');
 
