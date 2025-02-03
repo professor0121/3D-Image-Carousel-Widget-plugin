@@ -165,7 +165,7 @@ class Image_Carousel_Widget extends Widget_Base
         
         $this->end_controls_section();
         
-
+        
 
     }
 
@@ -185,8 +185,8 @@ class Image_Carousel_Widget extends Widget_Base
         echo '<div class="containers-wrapper">';
 
         // First container (Cube - Using Swiper)
-        echo '<div class="swiper-container cube-container">';
-        echo '<div class="swiper-wrapper">';
+        echo '<div class="swiper-container cube-container " >';
+        echo '<div class="swiper-wrapper customCssClass"    >';
 
         // Loop through each repeater item for the cube (each will be a slide)
         foreach ($items as $item) {
@@ -225,23 +225,23 @@ class Image_Carousel_Widget extends Widget_Base
 
         echo '</div>'; // End of image-carousel-widget
 
-        echo '<div class="text-swiper-slider swiper-container">'; // Add swiper-container class
-        echo '<div class="swiper-wrapper">';                      // swiper-wrapper to hold the slides
+            echo '<div class="text-swiper-slider swiper-container">'; // Add swiper-container class
+            echo '<div class="swiper-wrapper">';                      // swiper-wrapper to hold the slides
 
-        foreach ($items as $item) {
-            $heading     = isset($item['heading']) ? $item['heading'] : '';
-            $description = isset($item['description']) ? $item['description'] : '';
+            foreach ($items as $item) {
+                $heading     = isset($item['heading']) ? $item['heading'] : '';
+                $description = isset($item['description']) ? $item['description'] : '';
 
-            if ($heading || $description) {
-                echo '<div class="swiper-slide swiper-slide-text">'; // Add swiper-slide class
-                echo '<h3 class="carousel-heading">' . esc_html($heading) . '</h3>';
-                echo '<p class="carousel-description">' . esc_html($description) . '</p>';
-                echo '</div>'; // End of swiper-slide
+                if ($heading || $description) {
+                    echo '<div class="swiper-slide swiper-slide-text">'; // Add swiper-slide class
+                    echo '<h3 class="carousel-heading">' . esc_html($heading) . '</h3>';
+                    echo '<p class="carousel-description">' . esc_html($description) . '</p>';
+                    echo '</div>'; // End of swiper-slide
+                }
             }
-        }
 
-        echo '</div>'; // End of swiper-wrapper
-        echo '</div>'; // End of swiper-container
+            echo '</div>'; // End of swiper-wrapper
+            echo '</div>'; // End of swiper-container
 
         echo '</div>'; // End of 3d-image-carousel-widget
     }
