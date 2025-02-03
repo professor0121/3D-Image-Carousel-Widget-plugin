@@ -130,73 +130,19 @@
 }
 
 .zoomed{
-    animation: ZoomIn 10s ease-in-out infinite;
+    animation: ZoomIn 30s ease-in-out infinite;
 }
 
+ 
 @keyframes ZoomIn {
-    0% {
-        transform: scale(1);
+    0%{
+        transform:scale(1)
     }
-    5% {
-        transform: scale(1);
-    }
-    10% {
-        transform: scale(1);
-    }
-    15% {
-        transform: scale(1);
-    }
-    20% {
-        transform: scale(1.002);
-    }
-    25% {
-        transform: scale(1.003);
-    }
-    30% {
-        transform: scale(1.004);
-    }
-    35% {
-        transform: scale(1.005);
-    }
-    40% {
-        transform: scale(1.006);
-    }
-    45% {
-        transform: scale(1.007);
-    }
-    50% {
-        transform: scale(1.008);
-    }
-    55% {
-        transform: scale(1.009);
-    }
-    60% {
-        transform: scale(1.01);
-    }
-    65% {
-        transform: scale(1.011);
-    }
-    70% {
-        transform: scale(1.012);
-    }
-    75% {
-        transform: scale(1.013);
-    }
-    80% {
-        transform: scale(1.014);
-    }
-    85% {
-        transform: scale(1.015);
-    }
-    90% {
-        transform: scale(1.016);
-    }
-    95% {
-        transform: scale(1.017);
-    }
-    100% {
-        transform: scale(1.018);
+    100%{
+        transform:scale(2.5);
     }
 }
 
-
+.cube-container{
+     
+}
