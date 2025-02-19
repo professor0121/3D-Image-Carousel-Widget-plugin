@@ -14,7 +14,7 @@ Requires at least: 5.0
 Tested up to: 6.0
 Requires PHP: 7.0
 Compatible with: Elementor 3.0+
-GitHub Plugin URI: https://github.com/yourusername/3d-image-carousel-widget
+GitHub Plugin URI: https://github.com/professor0121/3d-image-carousel-widget
 */
 
 /* This plugin is licensed under the GPL-2.0+ License. */
@@ -45,6 +45,9 @@ add_action('wp_enqueue_scripts', 'enqueue_image_carousel_assets');
 
 function enqueue_swiper_assets()
 {
+    wp_enqueue_style('fancybox-css', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css');
+    wp_enqueue_script('fancybox-js', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js', ['jquery'], null, true);
+    wp_enqueue_style('animate-css', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
     wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css');
     wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', [], null, true);
 }
