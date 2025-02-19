@@ -76,6 +76,10 @@
         var loop = $carouselWidget.data("loop") === true;
         var animationDelay = parseInt($carouselWidget.data("animation-delay")) || 0;
         var animationDuration = parseFloat($carouselWidget.data("animation-duration")) || 1;
+        var direction_slider = $carouselWidget.data("direction") || "horizontal";
+
+
+        console.log(direction_slider)
 
         // Initialize Swiper for the vertical carousel (Right container)
         var verticalCarousel = new Swiper('.vertical-carousel', {
@@ -91,7 +95,7 @@
 
         // Initialize Swiper for the cube (Left container)
         var cubeSwiper = new Swiper('.cube-container', {
-            direction: 'vertical',
+            direction: direction_slider,
             loop: loop,
             effect: 'cube',
             cubeEffect: {

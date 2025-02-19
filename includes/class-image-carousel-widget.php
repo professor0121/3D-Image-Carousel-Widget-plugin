@@ -306,6 +306,31 @@ class Image_Carousel_Widget extends Widget_Base
         );
         
         $this->end_controls_section();
+
+        //cube direction controlls
+        $this->start_controls_section(
+            'slider_settings',
+            [
+                'label' => __('Slider Settings', 'text-domain'),
+                'tab'   => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        
+        $this->add_control(
+            'slider_direction',
+            [
+                'label'   => __('Slider Direction', 'text-domain'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'horizontal' => __('Horizontal', 'text-domain'),
+                    'vertical'   => __('Vertical', 'text-domain'),
+                ],
+                'default' => 'horizontal', // Default is Horizontal
+            ]
+        );
+        
+        $this->end_controls_section();
+        
         
         
         
@@ -498,12 +523,18 @@ protected function render()
     $animation_class  = !empty($settings['animation_effect']) ? 'animate__animated animate__' . esc_attr($settings['animation_effect']) : '';
     $animation_delay  = !empty($settings['animation_delay']['size']) ? esc_attr($settings['animation_delay']['size']) : '0';
     $animation_duration = !empty($settings['animation_duration']['size']) ? esc_attr($settings['animation_duration']['size']) : '1';
+    $slider_direction = !empty($settings['slider_direction']) ? esc_attr($settings['slider_direction']) : 'horizontal';
+
+
+    echo $slider_direction;
+
 
     // Pass these settings to JavaScript using data attributes
     echo '<div class="d3-image-carousel-widget" 
         data-autoplay="' . esc_attr($autoplay) . '" 
         data-loop="' . esc_attr($looping) . '" 
         data-animation-delay="' . esc_attr($animation_delay) . '" 
+        data-direction="' . esc_attr($slider_direction) . '" 
         data-animation-duration="' . esc_attr($animation_duration) . '">';
 
     echo '<div class="image-carousel-widget">';
@@ -582,6 +613,7 @@ protected function render()
         if ($heading || $description) {
             echo '<div class="swiper-slide swiper-slide-text ' . esc_attr($animation_class) . '" 
                     style="animation-delay:' . esc_attr($animation_delay) . 'ms; 
+
                            animation-duration:' . esc_attr($animation_duration) . 's;">';
             echo '<h3 class="carousel-heading">' . esc_html($heading) . '</h3>';
             echo '<p class="carousel-description">' . esc_html($description) . '</p>';
